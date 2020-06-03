@@ -1,0 +1,15 @@
+{% load static %}
+{% static 'css/style.css' as css_url %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}MySiteWithArticles{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{{ css_url }}">
+</head>
+<body>
+	
+	{% block content %}{% endblock %}
+
+</body>
+</html>
