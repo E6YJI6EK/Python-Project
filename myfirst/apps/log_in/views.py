@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect
-from .forms import LoginForm, UserRegistrationForm
-from django.http import HttpResponse
-from django.http import Http404, HttpResponseRedirect
+from django.contrib.auth.views import LogoutView
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login
-from .forms import LoginForm
 from articles.models import Article, Comment
 from .models import Profile
 from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
@@ -58,4 +56,5 @@ def edit(request):
                       {'user_form': user_form,
                        'profile_form': profile_form})   
 
-
+def logout_page(request):
+	return render(request, 'log_in/logout.html')

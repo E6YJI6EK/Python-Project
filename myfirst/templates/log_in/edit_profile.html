@@ -10,5 +10,6 @@
         {{ profile_form.as_p }}
         {% csrf_token %}
         <p><input type="submit" value="Save changes"></p>
+        <p><a href="{% url 'log_in:logout' %}" class="logout-btn">Logout</a></p>
     </form>
 {% endblock %}

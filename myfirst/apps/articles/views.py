@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect
 from django.urls import reverse
 from .models import Article, Comment
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 def index(request):
 	latestArticlesList = Article.objects.order_by('-pubDate')[:5]
@@ -19,7 +18,7 @@ def detail(request, articleId):
 
 	return render(request, 'articles/detail.html', {'article': a, 'latestCommentsList': latestCommentsList})	
 
-# @login_required
+
 def leaveComment(request, articleId):
 	try:
 		a = Article.objects.get(id = articleId)

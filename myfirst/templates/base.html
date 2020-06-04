@@ -8,7 +8,14 @@
 	<link rel="stylesheet" type="text/css" href="{{ css_url }}">
 </head>
 <body>
-	
+	<header>
+		{% if user.profile %}
+		<a href="{% url 'articles:index' %}">Home</a>
+		<a href="{% url 'log_in:edit_profile' %}">{{ user.username }}</a>
+		{% else %}
+		<a href="{% url 'log_in:user_login' %}">Login</a>
+		{% endif %}
+	</header>
 	{% block content %}{% endblock %}
 
 </body>

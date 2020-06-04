@@ -1,4 +1,10 @@
-
 * {
 	font-family: 'Ponter', sans-serif;
+}
+
+body {
+	display: flex;
+	flex-direction:column;
+	align-items: center;
+	justify-content:center;
 }

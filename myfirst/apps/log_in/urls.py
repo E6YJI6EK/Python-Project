@@ -9,7 +9,9 @@ app_name = 'log_in'
 urlpatterns  = [
 	path('register/', views.register, name='register'),
 	path('', views.user_login, name='user_login'),
-	path('edit/', views.edit, name='edit_profile')
+	path('edit/', views.edit, name='edit_profile'),
+	path('logout/', views.LogoutView.as_view(next_page = '/logged_out'), name='logout'),
+	path('logged_out', views.logout_page, name='logged_out')
 ]
 
 if settings.DEBUG:

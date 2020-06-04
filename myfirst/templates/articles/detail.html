@@ -28,7 +28,7 @@
 {% endif %}
 
 <br>
-
+{% if user.profile %}
 <form action="{% url 'articles:leaveComment' article.id %}" method="POST">
 
 	{% csrf_token %}
@@ -37,6 +37,8 @@
 	<button type="submit">Оставить комментарий</button>
 
 </form>
-
+{% else %}
+<p>У вас нет прав, чтобы оставлять комментарии. <a href="{% url 'log_in:user_login' %}">Войти?</a></p>
+{% endif %}
 {% endblock %}
 
