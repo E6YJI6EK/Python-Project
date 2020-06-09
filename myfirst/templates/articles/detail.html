@@ -18,9 +18,10 @@
 
 {% if latestCommentsList %}
 	{% for c in latestCommentsList %}
-		<p>
-			<strong>{{c.authorName}}</strong>
-			<p>{{c.commentText}}</p>
+		<p class="comment">
+			<strong class="authorname">{{c.authorName}}</strong>
+			<p class="comment-text">{{c.commentText}}</p>
+			<a href="#">Reply</a>
 		</p>
 	{% endfor %}
 {% else %}
@@ -32,7 +33,7 @@
 <form action="{% url 'articles:leaveComment' article.id %}" method="POST">
 
 	{% csrf_token %}
-	<input type="text" required placeholder="Ваше имя" name ="name"><br>
+	<!-- <input type="text" required placeholder="Ваше имя" name ="name"> --><br>
 	<textarea name="text" required placeholder="Текст комментария" cols="30" rows="10"></textarea><br>
 	<button type="submit">Оставить комментарий</button>
 

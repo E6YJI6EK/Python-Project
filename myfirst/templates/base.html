@@ -11,7 +11,7 @@
 	<header>
 		{% if user.profile %}
 		<a href="{% url 'articles:index' %}">Home</a>
-		<a href="{% url 'log_in:edit_profile' %}">{{ user.username }}</a>
+		<a href="{% url 'log_in:edit_profile' %}"><span class="username">{{ user.username }}</span></a>
 		{% else %}
 		<a href="{% url 'log_in:user_login' %}">Login</a>
 		{% endif %}

@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect
 from django.urls import reverse
 from .models import Article, Comment
+from django.contrib import auth
 
 def index(request):
 	latestArticlesList = Article.objects.order_by('-pubDate')[:5]
@@ -25,7 +26,11 @@ def leaveComment(request, articleId):
 	except:
 		raise Http404("Такой статьи нет :(")
 
-	a.comment_set.create(authorName = request.POST['name'], commentText = request.POST['text'])
+	author_name = auth.get_user(request)
+
+	a.comment_set.create(authorName = author_name, commentText = request.POST['text'])
 
 	return HttpResponseRedirect(reverse('articles:detail', args = (a.id,)))
 
+def reply_to_comment():
+	pass
